@@ -4,7 +4,7 @@ const jwt = require ("jsonwebtoken");
 module.exports = function (req, res, next){
     // Leer el token desde el header o postman
     const token = req.header("x-auth-token");
-    console.log(token);
+    //console.log(token);
 
     //revisar si no hay token
     if(!token){
@@ -17,7 +17,7 @@ module.exports = function (req, res, next){
         req.usuario = cifrado.usuario;
        // console.log(cifrado.usuario);
         next();
-        
+
     }catch(error){
         res.status(400).json({msg: "Token no valido"});
     };

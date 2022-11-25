@@ -7,4 +7,4 @@ const UsuariosSchema = mongoose.Schema ({
     registro:{ type: Date, default: Date.now()}
 });
 // definir el modelo
-module.exports = mongoose.model("Usuario", UsuariosSchema);
+module.exports = mongoose.model("Usuarios", UsuariosSchema);
