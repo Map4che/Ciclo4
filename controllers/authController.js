@@ -34,7 +34,7 @@ exports.autenticarUsuario = async(req,res) =>{
                 payload,
                 process.env.SECRETA,
                 {
-                    expiresIn: "1m", //1 hora
+                    expiresIn: "30d", // 30 dias
                 },
                 (error, token)=>{
                     if (error) throw error;

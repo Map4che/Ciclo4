@@ -2,8 +2,8 @@ const express = require("express");
 const conectarDB = require("./config/db");
 const app = express();
 const usuarioRoutes = require("./routes/usuarioRoutes");
-const categoriaRoutes = require("./routes/categoriaRoutes");
-const productoRoutes = require("./routes/productoRoutes");
+const categoriasRouters = require("./routes/categoriasRouters");
+const productosRouters = require("./routes/productosRouters");
 const auth = require("./routes/auth");
 
 
@@ -14,8 +14,8 @@ conectarDB();
 
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/auth", auth);
-app.use("/api/categorias", categoriaRoutes);
-app.use("/api/productos", productoRoutes);
+app.use("/api/categorias", categoriasRouters);
+app.use("/api/productos", productosRouters);
 
 
 
