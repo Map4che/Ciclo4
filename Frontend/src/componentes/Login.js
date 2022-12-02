@@ -3,14 +3,15 @@ import {Link} from "react-router-dom";
 
 const Login=()=>{
     return (
-    <main className='container mx-auto mt-1 md:mt-10 p-4 md:flex md:justify-center'>
+    <main className='container mx-auto mt-5 md:mt-10 p-5 md:flex md:justify-center'>
         
         
-        <div className='md:w-2/3 lg:w-2/5'>
+        <div className='md:w-21/3 lg:w-2/5'>
         
-        <h1 className="inline bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl trscking-tight text-transparent">Bienvenido!!</h1>
+        
             
-            <form className="my-10 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-20">
+            <form className="my-10 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-20 ">
+            <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Bienvenido!!</h1>
             <div className="my-4">
                 <div class="imageninicio rounded-full bg-cover bg-center"/>
             <label className="uppercase text-white block text-lx font-bold">Usuario</label>
