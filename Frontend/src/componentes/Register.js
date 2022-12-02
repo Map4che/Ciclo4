@@ -109,16 +109,18 @@ const Register=()=>{
     }
 
     return(
-        <main className='container mx-auto mt-5 md:mt-20 p-5 md:flex md:justify-center'>
-        <div className='md:w-2/3 lg:w-2/5'>
-        <h1 className="inline bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl trscking-tight text-transparent">Ingresa tus datos</h1>
+        <main className='container mx-auto mt-5 md:mt-10 p-5 md:flex md:justify-center'>
+        <div className='md:w-1/3 lg:w-2/5'>
+       
             
             <form 
-                className="my-10 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-10"
+                className="my-2 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-10"
                 onSubmit={onSubmit}
             >
-                <div class="imagenregistro bg-cover bg-center rounded-full"/>
-            <div className="my-5">
+                 <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold">Ingresa tus datos</h1>
+                <div class="imagenregistro bg-cover bg-center rounded-full my-6"/>
+                
+            <div className="my-6">
 
             <label className="uppercase text-white block tect-lx font-bold">Nombre</label>
             <input 
@@ -130,7 +132,8 @@ const Register=()=>{
             value={nombre}
             onChange={onChange}
             />
-
+            </div>
+            <div className= "my-6">
             <label className="uppercase text-white block text-lx font-bold">Email</label>
             <input 
             type="email"
@@ -141,7 +144,8 @@ const Register=()=>{
             value={email}
             onChange={onChange}
             />
-
+            </div>
+            <div className= "my-6">
             <label className="uppercase text-white block tect-lx font-bold">Password</label>
             <input 
             type="password"
@@ -152,7 +156,8 @@ const Register=()=>{
             value={password}
             onChange={onChange}
             />
-
+            </div>
+            <div className= "my-6">
             <label className="uppercase text-white block tect-lx font-bold">Confirme su Password</label>
             <input 
             type="password"
@@ -164,18 +169,19 @@ const Register=()=>{
             onChange={onChange}
             />
         </div>
+        <div className= "my-12">
             <input
                 type="submit"
                 value="Registrarse"
                 className="bg-gray-400 mb-5 w-full py-3 text-white uppercase font-bold rounded-full hover:cursor-pointer hover:bg-lime-500 transition-colors"
             />
-
+            
             <Link
             className="block text-center my-5 text-white font-bold"
             to={"/"}>
                 Regresar
             </Link>
-            
+            </div>
             </form>
             </div>
     </main>
