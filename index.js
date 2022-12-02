@@ -5,10 +5,14 @@ const usuarioRoutes = require("./routes/usuarioRoutes");
 const categoriasRouters = require("./routes/categoriasRouters");
 const productosRouters = require("./routes/productosRouters");
 const auth = require("./routes/auth");
+const cors = require("cors");
 
 
 app.use(express.json({extended: true}));
 conectarDB();
+
+//habilitar los CORS
+app.use(cors());
 
 //rutas
 

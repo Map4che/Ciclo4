@@ -25,3 +25,14 @@ console.log(error)
 };
 
 };
+
+exports.borrarUsuario = async (req,res) =>{
+
+    try{
+
+        await Usuario.deleteOne ({_id: req.params.id});
+        res.status(200).json({msg:"Usuario eliminado exitosamente, no olvidar quitar esta funcion"});
+    }catch(error){
+        console.log(error);
+    };
+};
