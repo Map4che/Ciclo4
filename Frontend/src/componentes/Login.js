@@ -6,14 +6,14 @@ const Login=()=>{
     <main className='container mx-auto mt-5 md:mt-10 p-5 md:flex md:justify-center'>
         
         
-        <div className='md:w-21/3 lg:w-2/5'>
+        <div className='md:w-1/3 lg:w-2/5'>
         
         
             
-            <form className="my-10 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-20 ">
-            <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Bienvenido!!</h1>
+            <form className="my-1 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-20 ">
+            <h1 className="my-6 text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Bienvenido!!</h1>
             <div className="my-4">
-                <div class="imageninicio rounded-full bg-cover bg-center"/>
+                <div class="my-6 imageninicio rounded-full bg-cover bg-center"/>
             <label className="uppercase text-white block text-lx font-bold">Usuario</label>
             <input type="email"
             placeholder="Ingrese su email de registro"
