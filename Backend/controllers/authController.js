@@ -14,11 +14,12 @@ exports.autenticarUsuario = async(req,res) =>{
           
           if(!usuario){
             return res.status(404).json({msg: "El email no esta registrado"});
+
           }
 
           // Confirmar el password
           const passwordCorrecto = await bcryptjs.compare(password, usuario.password);
-
+        
             if (!passwordCorrecto){
                 return res.status(401).json({msg: "Password incorrecto"});
             }

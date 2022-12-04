@@ -96,7 +96,7 @@ const Register=()=>{
                     confirmar:''
                 })
                 //redireccionar nuevamnete a la pagina login
-                navigate("/");
+                navigate("/login");
             };
     }
     }
@@ -114,7 +114,7 @@ const Register=()=>{
        
             
             <form 
-                className="my-2 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-lg p-10"
+                className="my-2 bg-gradient-to-r from-black via-gray-600 to-black shadow rounded-3xl p-10"
                 onSubmit={onSubmit}
             >
                  <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold">Ingresa tus datos</h1>
