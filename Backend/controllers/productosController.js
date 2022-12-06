@@ -12,7 +12,7 @@ exports.crearProducto = async (req,res)=>{
     try{
         console.log(categoriaId);
         const categoriaEncontrada = await Categorias.findById(categoriaId);
-        console.log(categoriaEncontrada);
+        //console.log(categoriaEncontrada);
         //const categoria = req.body;
         const producto = new Productos(req.body);
       
