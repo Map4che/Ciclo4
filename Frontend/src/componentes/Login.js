@@ -69,6 +69,12 @@ const Login=()=>{
                     }
                 });
         }else{
+
+            const jwt = response.token;
+
+            //Guardar la informacion el en localStorage
+            localStorage.setItem('token', jwt);
+
              //redireccionar nuevamnete a la pagina login
              navigate("/admin");
         }
