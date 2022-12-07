@@ -1,5 +1,7 @@
 import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import Header from './Header';
+import Sidebar from "./Sidebar";
 
 
     const Admin = () =>{
@@ -17,7 +19,7 @@ import { useNavigate } from "react-router-dom";
             }
         }
         autenticarUsuario()
-    },[]);//[] Asi se ejecuta una sola vez al ingresar
+    },[navigate]); //[] Asi se ejecuta una sola vez al ingresar
     
     
         const cerrarSesion=()=>{
@@ -26,23 +28,14 @@ import { useNavigate } from "react-router-dom";
         }
         
     return (
-    <main className='container mx-auto mt-5 md:mt-10 p-5 md:flex md:justify-center'>
-        
-        
-        <div className='md:w-1/3 lg:w-2/5'>
-        
-            
-            <h1 className="my-6 text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Bienvenido!! a la webAdmin</h1>
-           
-           <input
-            type="submit"
-            value="Cerrar Sesion"
-            className="bg-gray-400 mb-5 w-full py-3 text-white uppercase font-bold rounded-full hover:cursor-pointer hover:bg-red-700 transition-colors"
-            onClick= {cerrarSesion}
-          />
-           
-            </div>
-    </main>
+    
+            <>
+                <Header/>
+                <div className="md:flex md:min-h-screen">
+                <Sidebar/>
+                <h1 className="my-6 text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Lista categorias</h1>
+                </div>
+            </>
     );
 
     };
