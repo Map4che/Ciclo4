@@ -6,10 +6,11 @@ import crud from "../conexiones/crud";
 
 
     const ListaCategorias = () =>{
+        
 
         const navigate = useNavigate();
 
-    const [categoria, setCategoria] = useState({
+    const [categoria, getCategoria] = useState({
 
         nombre:""
         
@@ -18,26 +19,26 @@ import crud from "../conexiones/crud";
     const {nombre}= categoria;
 
     const onChange = (e)=>{
-        setCategoria({
+        getCategoria({
             ...categoria,
             [e.target.name]: e.target.value
         });
     };
         
-    const ingresarCategoria = async () =>{
+    const listaCategorias = async () =>{
 
         const data = {
             nombre: categoria.nombre
         }
         console.log(data);
-        const response = await crud.POST(`/api/categorias`, data);
+        const response = await crud.GET(`/api/categorias`, data);
         const mensaje = response.msg;
         console.log(mensaje);
     };
 
     const onSubmit = (e)=>{
         e.preventDefault();
-        ingresarCategoria();
+        listaCategorias();
     }
         
     return (
@@ -52,12 +53,22 @@ import crud from "../conexiones/crud";
        
        <form 
             onSubmit={onSubmit}
-            className=" my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10 "
+            className=" my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10 pr-10"
             >
                     <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold"> Lista de Categorias</h1>
 
             <div className="my-4">
                 <div class="my-6 imagencategoria rounded-full bg-cover bg-center"/>
+            </div>
+
+            <div>
+                <input
+                type="submit"
+                className="bg-black w-full p-3 text-white font-bold block text-center my-5 rounded-full hover:cursor-pointer hover:bg-sky-600 transition-colors"
+                value="Ver todas"
+                onClick={listaCategorias}
+                onChange={onChange}
+                />
             </div>
             </form>
        
