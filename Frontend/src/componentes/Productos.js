@@ -19,7 +19,7 @@ import crud from "../conexiones/crud";
         
     });
 
-    const {nombre, descripcion, stock, precio, imagen}= categoria;
+    const {nombre, descripcion, stock, precio, imagen, categoriaId}= categoria;
 
     const onChange = (e)=>{
         setProducto({
@@ -36,6 +36,7 @@ import crud from "../conexiones/crud";
             stock: categoria.stock,
             precio: categoria.precio,
             imagen: categoria.imagen,
+            categoriaId: categoria.categoriaId
 
         }
         console.log(data);
@@ -55,13 +56,14 @@ import crud from "../conexiones/crud";
         <div className="md:flex md:min-h-screen">
         <Sidebar/>
         
-        <main clasName="container mx-auto mt-5 md:mt-10 p-5 md:flex md:justify-center">
+        <main clasName="container mx-auto mt-5 md:mt-10 p-8 md:flex md:justify-center">
         
       
        
        <form 
             onSubmit={onSubmit}
-            className=" my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-20 "
+            className=" my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10"
+            
             >
                     <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold">Crear Producto</h1>
 
@@ -121,6 +123,21 @@ import crud from "../conexiones/crud";
             value={imagen}
             onChange={onChange}
             />
+
+<label className="uppercase text-white block text-lx font-bold">Elija la categoria: </label>
+            <select 
+            type="categoriaId"
+            id="categoriaId"
+            name="categoriaId"
+            placeholder="Elija la categoria"
+            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+            value={categoriaId}
+            onChange={onChange}
+            >
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
         
 
         <div className="my-4">

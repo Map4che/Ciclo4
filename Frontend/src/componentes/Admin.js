@@ -33,7 +33,10 @@ import Sidebar from "./Sidebar";
                 <Header/>
                 <div className="md:flex md:min-h-screen">
                 <Sidebar/>
-                <h1 className="my-6 text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Lista categorias</h1>
+                <div>
+                <h1 className="my-6 text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Bienvenido</h1>
+                <h4 className="my-6 text-center py-4 px-4 font-sans font-bold text-white">Por medio de la pagina de administrador podras ver, crear, actualizar y eliminar las categorias o productos de nuestro Ecommerce</h4>
+                </div>
                 </div>
             </>
     );
