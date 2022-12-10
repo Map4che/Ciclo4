@@ -46,9 +46,9 @@ import crud from "../conexiones/crud";
         <div className="md:flex md:min-h-screen">
         <Sidebar/>
         
-        <main clasName="container mx-auto mt-5 md:mt-10 p-5 md:flex md:justify-center">
+        <main className="flex-1">
         
-      
+        <div className="mt-10 flex justify-center">
        
        <form 
             onSubmit={onSubmit}
@@ -80,7 +80,7 @@ import crud from "../conexiones/crud";
           
             </div>
             </form>
-       
+            </div>
        </main>
 
        </div>

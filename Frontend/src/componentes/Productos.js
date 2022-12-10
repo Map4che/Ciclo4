@@ -56,13 +56,13 @@ import crud from "../conexiones/crud";
         <div className="md:flex md:min-h-screen">
         <Sidebar/>
         
-        <main clasName="container mx-auto mt-5 md:mt-10 p-8 md:flex md:justify-center">
+        <main className="flex-1">
         
-      
+        <div className="mt-10 flex justify-center">
        
        <form 
             onSubmit={onSubmit}
-            className=" my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10"
+            className=" my-10 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-5"
             
             >
                     <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold">Crear Producto</h1>
@@ -101,7 +101,13 @@ import crud from "../conexiones/crud";
             value={stock}
             onChange={onChange}
             />
+</div>
+</form>
 
+<form
+ onSubmit={onSubmit}
+ className=" my-10 bg-gradient-to-r from-black via-gray-300 to-gray-600 shadow rounded-3xl p-5">  
+     <div className="mt-24">
 <label className="uppercase text-white block text-lx font-bold">Ingrese el precio del Producto: </label>
             <input 
             type="precio"
@@ -150,7 +156,7 @@ import crud from "../conexiones/crud";
           
             </div>
             </form>
-       
+            </div>
        </main>
 
        </div>
