@@ -26,8 +26,27 @@ const Register=()=>{
 
     const crearCuenta = async () =>{
 
-        
-        if(password !== confirmar){
+        if((nombre).length===0 || (email).length===0 || (password).length===0){
+            
+            
+            const mensaje="Todos los campos son obligatorios";
+            swal({
+                title:"Error",
+                text:mensaje,
+                icon:"error",
+                buttons:{
+                    confirm:{
+                        text:"ok",
+                        value: true,
+                        visible: true,
+                        className:"btn btn-danger",
+                        closeModal:true
+                    }
+                }
+            });
+        }
+
+        else if(password !== confirmar){
             
             const mensaje="La contraseña no coincide";
             swal({
@@ -99,7 +118,7 @@ const Register=()=>{
                 navigate("/login");
             };
     }
-    }
+    };
 
     
 

@@ -18,7 +18,7 @@ class crud {
         const data ={
             method: 'GET',
             headers:{
-                'Content-type': 'application/json',
+                'Content-Type': 'application/json',
                 'x-auth-token': bearer
             }
         }
