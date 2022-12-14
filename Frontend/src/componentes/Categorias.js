@@ -3,6 +3,7 @@ import Header from './Header';
 import Sidebar from "./Sidebar";
 import {useNavigate} from "react-router-dom";
 import crud from "../conexiones/crud";
+import swal from "sweetalert";
 
 
     const Categorias = () =>{
@@ -11,11 +12,12 @@ import crud from "../conexiones/crud";
 
     const [categoria, setCategoria] = useState({
 
-        nombre:""
+        nombre:"",
+        imagen:""
         
     });
 
-    const {nombre}= categoria;
+    const {nombre, imagen}= categoria;
 
     const onChange = (e)=>{
         setCategoria({
@@ -27,13 +29,34 @@ import crud from "../conexiones/crud";
     const ingresarCategoria = async () =>{
 
         const data = {
-            nombre: categoria.nombre
+            nombre: categoria.nombre,
+            imagen: categoria.imagen
         }
         console.log(data);
         const response = await crud.POST(`/api/categorias`, data);
         const mensaje = response.msg;
         console.log(mensaje);
-    };
+
+        if(mensaje === "Categoria creada correctamente"){
+            const mensaje="Categoria creada correctamente";
+                swal({
+                    title:"Informacion",
+                    text:mensaje,
+                    icon:"success",
+                    buttons:{
+                        confirm:{
+                            text:"ok",
+                            value: true,
+                            visible: true,
+                            className:"btn btn-primary",
+                            closeModal:true
+                        }
+                    }
+                })
+
+                        navigate("/listaCategorias");
+                };
+            }
 
     const onSubmit = (e)=>{
         e.preventDefault();
@@ -69,6 +92,16 @@ import crud from "../conexiones/crud";
             onChange={onChange}
             />
         
+        <label className="uppercase text-white block text-lx font-bold">Ingrese la URL de la imagen: </label>
+            <input 
+            type="imagen"
+            id="imagen"
+            name="imagen"
+            placeholder="URL de la imagen"
+            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+            value={imagen}
+            onChange={onChange}
+            />
 
         <div className="my-4">
             <input

@@ -6,12 +6,23 @@ exports.crearCategoria = async (req,res) =>{
     const categoria = new Categorias(req.body);
     categoria.creador = req.usuario.id;
     categoria.save();
-    res.json(categoria);
+    res.json({msg:"Categoria creada correctamente"});
+    
     }catch(error){
         console.log(error);
     }
 
     };
+
+    exports.obtenerCategoriaId = async (req, res) =>{
+        const {id} = req.params
+        try{
+            const categoria = await Categorias.findById(id);
+            res.json({categoria});
+        }catch(error){
+            console.log(error);
+        }
+    }
 
     exports.obtenerCategoria = async (req,res) =>{
         
@@ -38,6 +49,7 @@ exports.crearCategoria = async (req,res) =>{
         }
 
         categoria.nombre = req.body.nombre || categoria.nombre;
+        categoria.imagen = req.body.imagen || categoria.imagen;
         categoria.save();
 
         res.json({categoria});

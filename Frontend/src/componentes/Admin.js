@@ -21,7 +21,19 @@ import Sidebar from "./Sidebar";
         autenticarUsuario()
     },[navigate]); //[] Asi se ejecuta una sola vez al ingresar
     
-    
+    /*
+        const [categoria,setCategoria] = useState([]);
+
+        const cargarCategoria = async () => {
+            const response= await crud.GET (`/api/categorias`);
+            console-log(response);
+            setCategoria(response.categoria);
+        }
+
+        useEffect (())
+        }
+*/
+
         const cerrarSesion=()=>{
             localStorage.removeItem("token");
             navigate("/");

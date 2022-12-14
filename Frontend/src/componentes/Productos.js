@@ -3,6 +3,7 @@ import Header from './Header';
 import Sidebar from "./Sidebar";
 import {useNavigate} from "react-router-dom";
 import crud from "../conexiones/crud";
+import swal from "sweetalert";
 
 
     const Productos = () =>{
@@ -43,7 +44,28 @@ import crud from "../conexiones/crud";
         const response = await crud.POST(`/api/productos`, data);
         const mensaje = response.msg;
         console.log(mensaje);
-    };
+
+        if(mensaje==="Producto creado correctamente"){
+            const mensaje="Producto creada correctamente";
+            swal({
+                title:"Informacion",
+                text:mensaje,
+                icon:"success",
+                buttons:{
+                    confirm:{
+                        text:"ok",
+                        value: true,
+                        visible: true,
+                        className:"btn btn-primary",
+                        closeModal:true
+                    }
+                }
+            })
+
+                    navigate("/listaProductos");
+            };
+        }
+    
 
     const onSubmit = (e)=>{
         e.preventDefault();

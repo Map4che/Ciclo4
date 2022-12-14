@@ -3,6 +3,7 @@ import Header from './Header';
 import Sidebar from "./Sidebar";
 import {Link, useNavigate} from "react-router-dom";
 import crud from "../conexiones/crud";
+import Productos from './../Productos';
 
 
     const Productos = () =>{
