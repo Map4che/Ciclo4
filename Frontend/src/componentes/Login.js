@@ -143,6 +143,12 @@ const Login=()=>{
             to={"/register"}>
                 Crear Cuenta
             </Link>
+
+            <Link
+            className="bg-red-700 text-white font-bold block text-center my-5 mx-40 rounded-full"
+            to={"/"}>
+                Cancelar
+            </Link>
             </div>
             </div>
             </form>

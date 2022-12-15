@@ -35,6 +35,17 @@ exports.crearCategoria = async (req,res) =>{
         
     };
 
+    exports.obtenerCategoriaHome = async (req,res) =>{
+        
+        try{
+            const categoria = await Categorias.find();
+            res.json({categoria});
+        }catch(error){
+            console.log(error);
+        }
+        
+    };
+
     exports.actualizarCategoria = async (req,res) =>{
         
         try{

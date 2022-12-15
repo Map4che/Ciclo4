@@ -141,6 +141,7 @@ import swal from "sweetalert";
             onChange={onChange}
             />
 
+
 <label className="uppercase text-white block text-lx font-bold">Ingrese la direccion de la imagen del Producto: </label>
             <input 
             type="imagen"

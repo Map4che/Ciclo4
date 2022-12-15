@@ -113,7 +113,7 @@ import crud from "../conexiones/crud";
                                                     <td>{item.descripcion}</td>
                                                     <td>{item.stock}</td>
                                                     <td>{item.precio}</td>
-                                                    <td>{item.imagen}</td>
+                                                    <td><img src={item.imagen} width="150" height="150"></img></td>
                                                     <td>{item.categoriaId}</td>
 
                                                     <td>
@@ -151,7 +151,13 @@ import crud from "../conexiones/crud";
                                 </tbody>
                                 </div>  
                             </form>
+                            <div>
+                                <Link 
+                                className="text-white font-bold block text-center my-5"
+                                to={"/homeproductos"}>Producto por categoria</Link>
+                            </div>
             </div>
+            
        </main>
 
        </div>
