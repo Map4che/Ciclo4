@@ -17,7 +17,7 @@ exports.crearProducto = async (req,res)=>{
         const producto = new Productos(req.body);
       
         producto.save();
-        res.json(producto);
+        res.json({msg:"Producto creado correctamente"});
         
     }catch(error){
         console.log(error);
@@ -25,7 +25,24 @@ exports.crearProducto = async (req,res)=>{
 
     };
 
+    exports.obtenerProductoId = async (req,res) =>{
+        const {id} = req.params
+        const producto=await Productos.find().where("categoriaId").equals(id);
+        res.json(producto);
+    }
+
     exports.obtenerProducto = async (req,res) =>{
+        try{
+
+            const producto = await Productos.find();
+            res.json({producto});
+
+        }catch(error){
+            console.log(error);
+        };
+    };
+
+    exports.obtenerProductoHome = async (req,res) =>{
         try{
 
             const producto = await Productos.find();

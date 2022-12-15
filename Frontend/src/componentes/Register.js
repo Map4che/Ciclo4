@@ -196,8 +196,8 @@ const Register=()=>{
             />
             
             <Link
-            className="block text-center my-5 text-white font-bold"
-            to={"/"}>
+            className="bg-red-700 block text-center my-5 text-white font-bold mx-40 rounded-full"
+            to={"/login"}>
                 Regresar
             </Link>
             </div>

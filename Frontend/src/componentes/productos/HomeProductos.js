@@ -3,6 +3,7 @@ import Header from './Header';
 import Sidebar from "./Sidebar";
 import {Link, useNavigate} from "react-router-dom";
 import crud from "../conexiones/crud";
+import Productos from './../Productos';
 
 
     const Productos = () =>{
@@ -113,7 +114,7 @@ import crud from "../conexiones/crud";
                                                     <td>{item.descripcion}</td>
                                                     <td>{item.stock}</td>
                                                     <td>{item.precio}</td>
-                                                    <td><img src={item.imagen} width="150" height="150"></img></td>
+                                                    <td>{item.imagen}</td>
                                                     <td>{item.categoriaId}</td>
 
                                                     <td>
@@ -151,13 +152,7 @@ import crud from "../conexiones/crud";
                                 </tbody>
                                 </div>  
                             </form>
-                            <div>
-                                <Link 
-                                className="text-white font-bold block text-center my-5"
-                                to={"/homeproductos"}>Producto por categoria</Link>
-                            </div>
             </div>
-            
        </main>
 
        </div>

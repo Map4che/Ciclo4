@@ -34,7 +34,7 @@ import {Link} from "react-router-dom";
 
             <Link
             className="bg-black w-full p-3 text-white font-bold block text-center my-5 rounded-full hover:cursor-pointer hover:bg-lime-500 transition-colors"
-            to={"/categorias"}>
+            to={"/"}>
                 Tienda
             </Link>
         </aside>

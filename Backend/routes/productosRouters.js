@@ -5,6 +5,10 @@ const authMidd = require("../middleware/authMidd");
 
 router.get("/", authMidd, productoController.obtenerProducto );
 
+router.get("/", productoController.obtenerProductoHome );
+
+router.get("/:id", authMidd, productoController.obtenerProducto );
+
 router.post("/", authMidd, productoController.crearProducto);
 
 router.put("/:id", authMidd, productoController.actualizarProducto);
