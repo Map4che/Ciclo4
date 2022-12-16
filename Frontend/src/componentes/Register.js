@@ -200,6 +200,8 @@ const Register=()=>{
             to={"/login"}>
                 Regresar
             </Link>
+
+            
             </div>
             </form>
             </div>

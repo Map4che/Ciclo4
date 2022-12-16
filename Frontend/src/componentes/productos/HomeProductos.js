@@ -49,6 +49,8 @@ import Productos from './../Productos';
         listaProductos();
     }*/
 
+    //const {isCategoria} = useParams();
+
     const [productos1, setProductos] = useState([]);
 
     const cargarProductos = async () => {
@@ -65,6 +67,12 @@ import Productos from './../Productos';
 
     }, [])
 
+
+    const cargarProductosId = async () =>{
+        const response = await crud.GET (`/api/productos/${isCategoria}`);
+        setProductos = async () =>
+        setProductos(response)
+    }
         
     return (
         <>
