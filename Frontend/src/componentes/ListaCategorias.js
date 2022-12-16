@@ -55,47 +55,45 @@ const ListaCategorias = () => {
 
     }, [])
 
-    const actualizarCategoria = async(idCategoria)=>{
+    const actualizarCategoria = async (idCategoria) => {
         const response = await crud.PUT(`/api/categorias/${idCategoria}`);
     }
-    
-    const borrarCategoria = async(e, idCategoria)=>{
+
+    const borrarCategoria = async (e, idCategoria) => {
         e.preventDefault();
-            
-                swal({
-    title: "Seguro quieres eliminar esta categoria?",
-    text: "Una vez eliminado no se podra recuperar la información!",
-     icon: "warning",
-    buttons: true,
-    dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-        
-        const response = crud.DELETE(`/api/categorias/${idCategoria}`);
-        const mensaje = response.msg;
-        //console.log(response.msg);
-        
-        if(response){    
-        swal("La Categoria ha sido eliminada exitosamente!", {
-      icon: "success",
-    });cargarCategorias();
-}
 
-    
-  } else {
-    swal({
-        text:"No se ha realizado ningun cambio!",
-        icon:"error"});
-  }cargarCategorias();
+        swal({
+            title: "Seguro quieres eliminar esta categoria?",
+            text: "Una vez eliminado no se podra recuperar la información!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
 
-});
-                }
-                        
+                    const response = crud.DELETE(`/api/categorias/${idCategoria}`);
+                    const mensaje = response.msg;
+                    //console.log(response.msg);
 
-            
-    
-            
+                    if (response) {
+                        swal("La Categoria ha sido eliminada exitosamente!", {
+                            icon: "success",
+                        }); cargarCategorias();
+                    }
+
+
+                } else {
+                    swal({
+                        text: "No se ha realizado ningun cambio!",
+                        icon: "error"
+                    });
+                } cargarCategorias();
+
+            });
+    }
+
+
 
     /*
      const onSubmit = (e)=>{
@@ -126,7 +124,7 @@ const ListaCategorias = () => {
                                 <thead className=''>
 
                                     <tr>
-                                        <th style={{width: '30%'}}>Imagen</th>
+                                        <th style={{ width: '30%' }}>Imagen</th>
 
                                         <th style={{ width: '45%' }}>Nombre</th>
 
@@ -150,17 +148,17 @@ const ListaCategorias = () => {
                                                         <Link to="/productos">crear producto</Link>&nbsp;&nbsp;
 
                                                         <input
-                                                        type="submit"
-                                                        value="Actualizar"
-                                                        className="bg-violet-900 py-3 text-white font-bold"
-                                                        onClick={(e) => actualizarCategoria(e, item._id)}
+                                                            type="submit"
+                                                            value="Actualizar"
+                                                            className="bg-violet-900 py-3 text-white font-bold"
+                                                            onClick={(e) => actualizarCategoria(e, item._id)}
                                                         />
 
                                                         <input
-                                                        type="submit"
-                                                        value="Eliminar"
-                                                        className="bg-violet-900 py-3 text-white font-bold"
-                                                        onClick={(e) => borrarCategoria(e, item._id)}
+                                                            type="submit"
+                                                            value="Eliminar"
+                                                            className="bg-violet-900 py-3 text-white font-bold"
+                                                            onClick={(e) => borrarCategoria(e, item._id)}
                                                         />
 
                                                     </td>
