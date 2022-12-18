@@ -1,5 +1,7 @@
 const Usuario = require("../models/Usuarios");
 const bcryptjs = require ("bcryptjs");
+
+
 exports.crearUsuario = async (req,res) =>{
     //console.log(req.body);
     const {password, email} = req.body;

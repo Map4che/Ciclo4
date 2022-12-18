@@ -1,7 +1,29 @@
 const Productos = require("../models/Productos");
-const Categorias= require("../models/Categorias");
 
 
+
+exports.obtenerProductosHome = async (req,res) =>{
+    try{
+
+        const productos = await Productos.find();
+        res.json({productos});
+
+    }catch(error){
+        console.log(error);
+    };
+};
+
+exports.obtenerProducto = async (req,res) =>{
+    try{
+
+        const {id} = req.params
+        const producto = await Productos.find().where("categoriaId").equals(id);
+        res.json({producto});
+
+    }catch(error){
+        console.log(error);
+    };
+};
 
 exports.crearProducto = async (req,res)=>{
 
@@ -25,33 +47,6 @@ exports.crearProducto = async (req,res)=>{
 
     };
 
-    exports.obtenerProductoId = async (req,res) =>{
-        const {id} = req.params
-        const producto=await Productos.find().where("categoriaId").equals(id);
-        res.json(producto);
-    }
-
-    exports.obtenerProducto = async (req,res) =>{
-        try{
-
-            const producto = await Productos.find();
-            res.json({producto});
-
-        }catch(error){
-            console.log(error);
-        };
-    };
-
-    exports.obtenerProductoHome = async (req,res) =>{
-        try{
-
-            const producto = await Productos.find();
-            res.json({producto});
-
-        }catch(error){
-            console.log(error);
-        };
-    };
 
     exports.actualizarProducto = async (req,res) =>{
 

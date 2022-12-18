@@ -3,12 +3,14 @@ import Header from './Header';
 import Sidebar from "./Sidebar";
 import {Link, useNavigate} from "react-router-dom";
 import crud from "../conexiones/crud";
+import swal from "sweetalert";
 
 
     const Productos = () =>{
 
         const navigate = useNavigate();
 
+        /*
     const [producto, getProducto] = useState({
 
         nombre:"",
@@ -19,7 +21,7 @@ import crud from "../conexiones/crud";
         
     });
 
-    //const {nombre, descripcion, stock, precio, imagen}= producto;
+    const {nombre, descripcion, stock, precio, imagen}= producto;
 
     const onChange = (e)=>{
         getProducto({
@@ -48,21 +50,59 @@ import crud from "../conexiones/crud";
         listaProductos();
     }*/
 
-    const [productos1, setProductos] = useState([]);
+    const [producto, setProducto] = useState([]);
 
-    const cargarProductos = async () => {
+    const cargarProductos = async()=>{
 
-        const response = await crud.GET(`/api/productos`);
+        const response = await crud.GET (`/api/productos`);
         console.log(response);
-        setProductos(response.producto);
-
+        setProducto(response.producto);
     }
 
-    useEffect(() => {
+        useEffect(()=>{
+            cargarProductos();
+        },[]);
 
-        cargarProductos();
 
-    }, [])
+        const borrarProducto = async (e, idProducto) => {
+            e.preventDefault();
+    
+            swal({
+                title: "Seguro quieres eliminar este Producto?",
+                text: "Una vez eliminado no se podra recuperar la información!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+    
+                        const response = crud.DELETE(`/api/productos/${idProducto}`);
+                        const mensaje = response.msg;
+                        //console.log(response.msg);
+    
+                        if (response) {
+                            swal("El Producto ha sido eliminada exitosamente!", {
+                                icon: "success",
+                            }); cargarProductos();
+                        }
+    
+    
+                    } else {
+                        swal({
+                            text: "No se ha realizado ningun cambio!",
+                            icon: "error"
+                        });
+                    } cargarProductos();
+    
+                });
+        }
+
+        const actualizarProducto = async (idProducto) => {
+        
+            navigate(`/actproductos/${idProducto}`);
+        
+        }
 
         
     return (
@@ -73,9 +113,9 @@ import crud from "../conexiones/crud";
         
         <main className="flex-1">
         
-        <div className="mt-10 flex justify-center">
+        <div className="mt-3 flex justify-center">
        
-        <form className="table table-bordered my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10 px-10">
+        <table className="table table-bordered my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10 px-10">
                     <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold"> Lista de Productos</h1>
 
                     <div className="my-4">
@@ -101,7 +141,7 @@ import crud from "../conexiones/crud";
 
                                     {
 
-                                        productos1.map(
+                                        producto.map(
 
                                             item =>
 
@@ -122,11 +162,26 @@ import crud from "../conexiones/crud";
 
                                                     <td>
 
-                                                        <Link  >crear producto</Link>&nbsp;&nbsp;
+                                                    <input 
+                                                            type="submit"
+                                                            value="Crear producto"
+                                                            className="w-full bg-violet-800 mt-5 px-20 py-4 text-white font-bold my-1 mr-3 hover:cursor-pointer hover:bg-lime-500 transition-colors"
+                                                            onClick={(e) => actualizarProducto(e, item._id)}
+                                                        />
 
-                                                        <Link classNameclassName="bg-black w-full p-3 text-white font-bold block text-center my-5 rounded-full hover:cursor-pointer hover:bg-sky-600 transition-colors">Editar</Link>&nbsp;&nbsp;
+                                                        <input
+                                                            type="submit"
+                                                            value="Actualizar"
+                                                            className="bg-violet-900 py-3 text-white font-bold"
+                                                            onClick={(e) => actualizarProducto(e, item._id)}
+                                                        />
 
-                                                        <button  >Eliminar</button>
+                                                        <input
+                                                            type="submit"
+                                                            value="Eliminar"
+                                                            className="bg-violet-900 py-3 text-white font-bold"
+                                                            onClick={(e) => borrarProducto(e, item._id)}
+                                                        />
 
                                                     </td>
 
@@ -150,12 +205,8 @@ import crud from "../conexiones/crud";
 
                                 </tbody>
                                 </div>  
-                            </form>
-                            <div>
-                                <Link 
-                                className="text-white font-bold block text-center my-5"
-                                to={"/homeproductos"}>Producto por categoria</Link>
-                            </div>
+                            </table>
+                            
             </div>
             
        </main>

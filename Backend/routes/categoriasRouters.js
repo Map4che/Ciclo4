@@ -3,11 +3,11 @@ const router = express.Router();
 const categoriaController = require("../controllers/categoriasController");
 const authMidd = require("../middleware/authMidd");
 
-router.get("/home", authMidd, categoriaController.obtenerCategoria);
+router.get("/home", categoriaController.obtenerCategoriaHome);
 
-router.get("/", categoriaController.obtenerCategoriaHome);
+router.get("/", authMidd, categoriaController.obtenerCategoria);
 
-router.get("/:id", authMidd, categoriaController.obtenerCategoria);
+router.get("/:id", authMidd, categoriaController.obtenerCategoriaId);
 
 router.post("/", authMidd, categoriaController.crearCategoria);
 

@@ -1,12 +1,12 @@
 const express = require("express");
 const conectarDB = require("./config/db");
-const app = express();
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const categoriasRouters = require("./routes/categoriasRouters");
 const productosRouters = require("./routes/productosRouters");
 const auth = require("./routes/auth");
 const cors = require("cors");
 
+const app = express();
 
 app.use(express.json({extended: true}));
 conectarDB();

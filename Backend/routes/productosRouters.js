@@ -3,15 +3,16 @@ const router = express.Router();
 const productoController = require("../controllers/productosController");
 const authMidd = require("../middleware/authMidd");
 
-router.get("/home", authMidd, productoController.obtenerProducto );
-
-router.get("/", productoController.obtenerProductoHome );
+router.get("/home", productoController.obtenerProductosHome );
 
 router.get("/:id", authMidd, productoController.obtenerProducto );
 
+router.get("/", authMidd, productoController.obtenerProducto );
+
+
 router.post("/", authMidd, productoController.crearProducto);
 
-router.put("/:id", authMidd, productoController.actualizarProducto);
+//router.put("/:id", authMidd, productoController.actualizarProducto);
 
 router.delete("/:id", authMidd, productoController.borrarProducto);
 

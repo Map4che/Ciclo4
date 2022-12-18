@@ -14,7 +14,13 @@ export const ViewProductos = ({producto}) =>{
                 <img src={imagen} width='150' height='150'/>
             </div>
            <div className="flex flex-col lg:flex-row gap-2">
-                <button className =""></button>
+                <button className ="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
+                    Editar
+                </button>
+
+                <button className ="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
+                    Eliminar
+                </button>
 
            </div>
 
@@ -22,3 +28,5 @@ export const ViewProductos = ({producto}) =>{
         
     )
 }
+
+export default ViewProductos;

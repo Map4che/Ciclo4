@@ -6,7 +6,7 @@ require ("dotenv").config({path:"variables.env"});
 
 exports.autenticarUsuario = async(req,res) =>{
 
-    const {password, email} = (req.body);
+    const {password, email} = req.body;
 
     try{
 
@@ -22,13 +22,14 @@ exports.autenticarUsuario = async(req,res) =>{
         
             if (!passwordCorrecto){
                 return res.status(401).json({msg: "Password incorrecto"});
+
             }
 
             console.log("Usuario ingreso correctamente");
 
             //Si todo es correcto: crear y firmar un token
             const payload = {
-                usuario: {id: usuario.id}
+                usuario: {id: usuario.id},
             };
             //res.json(payload);
             jwt.sign(
