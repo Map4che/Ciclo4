@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
         <aside className="md:w-60 lg:w-50 px-10 py-0 bg-slate-500">
             <Link
             className="bg-black w-full p-3 text-white font-bold block text-center my-5 rounded-full hover:cursor-pointer hover:bg-lime-500 transition-colors"
-            to={"/listacategorias"}>
+            to={"/admin"}>
                 Lista Categorias
             </Link>
 

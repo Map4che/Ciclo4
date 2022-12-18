@@ -54,7 +54,7 @@ import swal from "sweetalert";
                     }
                 })
 
-                        navigate("/listaCategorias");
+                        navigate("/admin");
                 };
             }
 

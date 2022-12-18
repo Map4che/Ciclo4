@@ -40,7 +40,7 @@ import swal from "sweetalert";
             categoriaId: categoria.categoriaId
 
         }
-        console.log(data);
+        //console.log(data);
         const response = await crud.POST(`/api/productos`, data);
         const mensaje = response.msg;
         console.log(mensaje);

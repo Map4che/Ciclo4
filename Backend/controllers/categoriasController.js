@@ -1,5 +1,38 @@
 const Categorias = require ("../models/Categorias");
 
+
+exports.obtenerCategoriaHome = async (req,res) =>{
+        
+    try{
+        const categoria = await Categorias.find();
+        res.json({categoria});
+    }catch(error){
+        console.log(error);
+    }
+    
+};
+
+exports.obtenerCategoria = async (req,res) =>{
+        
+    try{
+        const categoria = await Categorias.find({creador: req.usuario.id});
+        res.json({categoria});
+    }catch(error){
+        console.log(error);
+    }
+    
+};
+
+exports.obtenerCategoriaId = async (req, res) =>{
+    const {id} = req.params
+    try{
+        const categoria = await Categorias.findById(id);
+        res.json({categoria});
+    }catch(error){
+        console.log(error);
+    }
+};
+
 exports.crearCategoria = async (req,res) =>{
 
     try{
@@ -12,44 +45,11 @@ exports.crearCategoria = async (req,res) =>{
         console.log(error);
     }
 
-    };
-
-    exports.obtenerCategoriaId = async (req, res) =>{
-        const {id} = req.params
-        try{
-            const categoria = await Categorias.findById(id);
-            res.json({categoria});
-        }catch(error){
-            console.log(error);
-        }
-    }
-
-    exports.obtenerCategoria = async (req,res) =>{
-        
-        try{
-            const categoria = await Categorias.find({creador: req.usuario.id});
-            res.json({categoria});
-        }catch(error){
-            console.log(error);
-        }
-        
-    };
-
-    exports.obtenerCategoriaHome = async (req,res) =>{
-        
-        try{
-            const categoria = await Categorias.find();
-            res.json({categoria});
-        }catch(error){
-            console.log(error);
-        }
-        
-    };
+    };  
 
     exports.actualizarCategoria = async (req,res) =>{
         
-        try{
-        const{ id } = req.params;
+        const { id } = req.params;
         const categoria = await Categorias.findById(id);
 
         if(!categoria){
@@ -65,9 +65,7 @@ exports.crearCategoria = async (req,res) =>{
 
         res.json({categoria});
 
-        }catch(error){
-            console.log(error);
-        };
+       
     };
 
     exports.borrarCategoria = async (req,res) =>{
