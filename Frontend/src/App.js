@@ -7,7 +7,7 @@ import Admin from "./componentes/Admin";
 import Categorias from "./componentes/Categorias";
 import Productos from "./componentes/Productos";
 import ListaProductos from "./componentes/ListaProductos";
-
+import ProductosXCategoria from "./componentes/productos/ProductosXCategoria";
 import ActualizarCategorias from './componentes/categorias/ActualizarCategorias';
 import CrearProductos from './componentes/productos/CrearProductos';
 
@@ -22,7 +22,7 @@ function App(){
         <Route path="/categorias" exact element={<Categorias/>}/>
         <Route path="/productos" exact element={<Productos/>}/>
         <Route path="/listaproductos" exact element= {<ListaProductos/>}/>
-        
+        <Route path="/categoria/:id"exact element={<ProductosXCategoria/>}/>
         <Route path="/actcategoria/:idCategoria" exact element={<ActualizarCategorias/>}/>
         <Route path="/crearproducto/:idCategoria" exact element={<CrearProductos/>}/>
       </Routes>

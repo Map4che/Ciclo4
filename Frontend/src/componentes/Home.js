@@ -2,26 +2,43 @@ import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import crud from "../conexiones/crud";
 
-/* 126
- {producto.map((product) =>(
-                <div key={product.id}>
 
-              <a class="block relative h-48 rounded overflow-hidden">
+/*{producto.map((product) => (
+                
+                    <a key={product.nombre}
+                    href={product.href}>
+                   
+                   <div className="relative flex h-20 flex-col overflow-hidden p-20 hover:opacity-60 xl:w-auto rounded-full mx-auto my-2"
+                  >
+                    <a class="block relative h-48 rounded overflow-hidden">
                 <img 
                 src={product.imagen}
                 alt={product.imageAlt}
                 class="object-cover object-center w-full h-full block" 
                 />
-              </a>
+              
               <div class="mt-1">
           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-0">{product.categoria}</h3>
           <h2 class="text-white title-font text-lg font-medium">{product.nombre}</h2>
           <p class="mt-0">Precio: ${product.precio}</p>
           <p class="mt-0 mb-10">Stock:{product.stock}</p>
+          
         </div>
-            </div>
-      ))}
-          */
+        
+        <a
+       
+        className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
+      >
+        Add to bag<span className="sr-only">, {product.name}</span>
+      </a>
+      </a>
+        </div>
+        
+        </a>
+        
+                  
+                ))}
+                */
 
     const Home = () =>{
 
@@ -38,13 +55,16 @@ import crud from "../conexiones/crud";
         const [producto, setProducto] = useState([]);
         
         const cargarProductos = async () =>{
-            const response = await crud.GET(`/api/productos`);
-            setProducto (response.producto);
+            const response = await crud.GET(`/api/productos/home`);
+            setProducto (response.productos);
         }
-
+        console.log(producto);
         useEffect(()=>{
             cargarProductos();
         },[]);
+
+        
+        
 
     return (
     <main className='flex-1'> 
@@ -78,23 +98,26 @@ import crud from "../conexiones/crud";
 
             </div>
             </header>
-           <div clasName="mx-10 my-auto">
-         <section class="text-gray-400 bg-gray-900 body-font my-0 p-15">
+           
+         <section class="text-gray-400 bg-gray-900 ">
          <h1 className="my-6 text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold ">Bienvenido!! Ecommerce T!C</h1>
 
 
-         <div className="mt-4 flow-root ">
-          <div className="my-4 mx-8 gap-4 p-4 ">
-            <div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
-              <div className="my-auto mx-auto min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-6 xl:gap-x-4 xl:space-x-0 xl:px-0">
-                {categoria.map((category) => (
+         
+          
+            <div className="relative box-content overflow-x-auto py-2 xl:overflow-visible">
+              <div className="xl:grid-cols-6 my-5 mx-5 min-w-screen-xl absolute flex space-x-8 sm:px-6 lg:px-5 xl:relative xl:grid xl:grid-cols-4 xl:gap-x-8 xl:space-x-0 xl:px-0">
+             
+               {categoria.map((category) => (
                   <a
                     key={category.nombre}
-                    href={category.href}
-                    className="relative flex h-20 flex-col overflow-hidden p-20 hover:opacity-60 xl:w-auto rounded-full mx-auto my-2"
+                    href="/categoria/:id"
+                    className="relative flex h-10 flex-col overflow-hidden p-20 hover:opacity-60 xl:w-auto rounded-full mx-auto my-2"
                   >
                     <span aria-hidden="true" className="absolute inset-0">
+                     
                       <img src={category.imagen} alt="" className="h-full w-full object-cover object-center" />
+                      
                     </span>
                     <span
                       aria-hidden="true"
@@ -105,37 +128,62 @@ import crud from "../conexiones/crud";
                 ))}
               </div>
               </div>
-          </div>
-                  </div>
+          
+                  
                   
                   </section>
-          </div>
-        
-        
+          
                   
           <section class="text-gray-400 body-font">
-          <div className="container px-5 py-24 mx-auto"> 
+          <div className="container px-5 py-5 mx-auto"> 
          
-         
-
-<div className="mt-4 flow-root flex-wrap">
-          <div className="-my-2">
-            <div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
-              <div className="ml-10 mr-10 min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-4 xl:gap-x-12 xl:space-x-0 xl:px-0">
-
-              
-      
-           </div>
-    
-        
           
-           </div> 
-           
-      
-           </div>
+          <div className="my-4 mx-8 gap-4 p-4 ">
+            <div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
+              <div className="my-auto mx-auto min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-4 xl:gap-x-4 xl:space-x-0 xl:px-0">
+              {producto.map((product) => (
+                
+                <a key={product.nombre}
+                >
+               
+               <div 
+              >
+                <a >
+            <img width="300px" height="300px" 
+            className=" mx-4 my-5 rounded-2xl"
+            src={product.imagen}
+            alt={product.imageAlt}
+             
+            />
+          
+          <div class="mt-1">
+          <h3 class="text-gray-300 text-xs tracking-widest title-font mb-0">{product.categoriaId}</h3>
+      <h2 class="text-white title-font text-lg font-medium">{product.nombre}</h2>
+      <p class="text-gray-200 mt-0">Precio: ${product.precio}</p>
+      <p class="text-gray-200 mt-0 mb-0">Stock:{product.stock}</p>
       
     </div>
-  </div>
+    
+    <a
+   
+    className="mb-8 w-3/4 relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-1 px-1 text-sm font-medium text-gray-900 hover:bg-gray-200"
+  >
+    Add to bag<span className="sr-only">, {product.name}</span>
+  </a>
+  </a>
+    </div>
+    
+    </a>
+    
+              
+            ))}
+              </div>
+              </div>
+          </div>
+                  </div>
+      
+           
+    
 </section>
 
     </main>

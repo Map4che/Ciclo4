@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import swal from "sweetalert";
 import crud from "../conexiones/crud";
@@ -6,6 +6,17 @@ import crud from "../conexiones/crud";
 const Register=()=>{
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+        const autenticarUsuario = async () =>{
+            const token = localStorage.getItem ('token')
+            if(token){
+                navigate("/admin");
+            }
+        }
+        autenticarUsuario()
+    },[navigate]);
 
     const [usuario, setUsuario] = useState({
 

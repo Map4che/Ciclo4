@@ -13,26 +13,50 @@ exports.obtenerProductosHome = async (req,res) =>{
     };
 };
 
-exports.obtenerProducto = async (req,res) =>{
-    try{
 
-        const {id} = req.params
-        const producto = await Productos.find().where("categoriaId").equals(id);
-        res.json({producto});
+exports.obtenerProducto = async ( req, res) => {
+    const { id } = req.params
+    const producto = await Productos.find().where("categoriaId").equals(id);
+    res.json(producto);
 
-    }catch(error){
-        console.log(error);
-    };
 };
 
-exports.crearProducto = async (req,res)=>{
+exports.obtenerProductoId = async ( req, res) => {
+    const { id } = req.params
+    const producto = await Productos.find().where("categoriaId").equals(id);
+    res.json(producto);
 
+};
+
+/*
+exports.obtenerProductoId = async (req, res) =>{
+    const { id } = req.params;
+    try{
+        const productos = await Productos.findById(id);
+        res.json({productos});
+    }catch(error){
+        console.log(error);
+    }
+};*/
+
+exports.crearProducto = async ( req, res) => {
+    try{
+        const producto = new Productos(req.body);
+       
+        producto.save();
+        res.json(producto);
+    }catch(error){
+        console.log(error);
+    }
+};
+   
+    /*
     res.status(201).json({msg:"Producto creado"});
    
     const {categoriaId} = req.body;
     console.log(req)
     try{
-        console.log(categoriaId);
+        //console.log(categoriaId);
         const categoriaEncontrada = await Categorias.findById(categoriaId);
         //console.log(categoriaEncontrada);
         //const categoria = req.body;
@@ -45,7 +69,7 @@ exports.crearProducto = async (req,res)=>{
         console.log(error);
     }
 
-    };
+    };*/
 
 
     exports.actualizarProducto = async (req,res) =>{

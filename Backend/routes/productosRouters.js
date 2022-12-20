@@ -1,19 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const productoController = require("../controllers/productosController");
+const productosController = require("../controllers/productosController");
 const authMidd = require("../middleware/authMidd");
 
-router.get("/home", productoController.obtenerProductosHome );
 
-router.get("/:id", authMidd, productoController.obtenerProducto );
+router.get("/home", productosController.obtenerProductosHome );
 
-router.get("/", authMidd, productoController.obtenerProducto );
+router.get("/:id", authMidd, productosController.obtenerProductoId );
+
+router.get("/home/:id", productosController.obtenerProducto );
 
 
-router.post("/", authMidd, productoController.crearProducto);
 
-//router.put("/:id", authMidd, productoController.actualizarProducto);
+router.post("/", authMidd, productosController.crearProducto);
 
-router.delete("/:id", authMidd, productoController.borrarProducto);
+router.put("/:id", authMidd, productosController.actualizarProducto);
+
+router.delete("/:id", authMidd, productosController.borrarProducto);
 
 module.exports=router;
