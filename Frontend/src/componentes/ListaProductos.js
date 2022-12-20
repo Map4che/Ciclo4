@@ -50,13 +50,16 @@ import swal from "sweetalert";
         listaProductos();
     }*/
 
+
+
+    
     const [producto, setProducto] = useState([]);
 
     const cargarProductos = async()=>{
 
-        const response = await crud.GET (`/api/productos`);
+        const response = await crud.GET (`/api/productos/home`);
         console.log(response);
-        setProducto(response.producto);
+        setProducto(response.productos);
     }
 
         useEffect(()=>{
@@ -78,6 +81,7 @@ import swal from "sweetalert";
                     if (willDelete) {
     
                         const response = crud.DELETE(`/api/productos/${idProducto}`);
+                        //console.log(response);
                         const mensaje = response.msg;
                         //console.log(response.msg);
     
@@ -103,7 +107,7 @@ import swal from "sweetalert";
             navigate(`/actproductos/${idProducto}`);
         
         }
-
+        
         
     return (
         <>
@@ -115,24 +119,24 @@ import swal from "sweetalert";
         
         <div className="mt-3 flex justify-center">
        
-        <table className="table table-bordered my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10 px-10">
+        <table className="my-10 mx-4 table table-bordered my-4 bg-gradient-to-r from-gray-600 via-gray-300 to-black shadow rounded-3xl p-10 px-10">
                     <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold"> Lista de Productos</h1>
 
-                    <div className="my-4">
-                    <div class="my-6 imagenproducto rounded-full bg-cover bg-center" />
+                    <div className="my-4 mx-5">
+                    <div class="my-6  imagenproducto rounded-full bg-cover bg-center" />
                                 
                                 <thead className=''>
 
                                     <tr>
 
-                                        <th style={{ width: '10%' }}>Nombre</th>
-                                        <th style={{ width: '10%' }}>Descripcion</th>
-                                        <th style={{ width: '10%' }}>Stock</th>
-                                        <th style={{ width: '10%' }}>Precio</th>
-                                        <th style={{ width: '10%' }}>Imagen</th>
-                                        <th style={{ width: '10%' }}>Categoria</th>
+                                        <th className="relative justify-center ml-3 bg-red-500" style={{ width: '5%' }}>Nombre</th>
+                                        <th className="relative justify-center ml-3 bg-red-500" style={{ width: '15%' }}>Descripcion</th>
+                                        <th className="relative justify-center ml-3 bg-red-500" style={{ width: '10%' }}>Stock</th>
+                                        <th className="relative justify-center bg-red-500"style={{ width: '5%' }}>Precio</th>
+                                        <th className="relative justify-center bg-red-500" style={{ width: '5%' }}>Imagen</th>
+                                        <th className="relative justify-center ml-3 bg-red-500" style={{ width: '5%' }}>Categoria</th>
 
-                                        <th style={{ width: '30%' }}>Opciones</th>
+                                        <th className="relative justify-center bg-red-500" style={{ width: '5%' }}>Opciones</th>
 
                                     </tr>
 
@@ -149,37 +153,25 @@ import swal from "sweetalert";
 
                                                     
 
-                                                    <td>{item.nombre}</td>
-                                                    <td>{item.descripcion}</td>
-                                                    <td>{item.stock}</td>
-                                                    <td>{item.precio}</td>
-                                                    <td><img src={item.imagen} width="150" height="150"></img></td>
-                                                    <td>{item.categoriaId}</td>
+                                                    <td className="relative justify-center text-center">{item.nombre}</td>
+                                                    <td className="relative justify-center text-center">{item.descripcion}</td>
+                                                    <td className="relative justify-center text-center">{item.stock}</td>
+                                                    <td className="relative justify-center text-center">{item.precio}</td>
+                                                    <td ><img src={item.imagen} className="relative justify-center text-center" width="150" height="150"></img></td>
+                                                    <td className="relative justify-center text-center">{item.categoriaId}</td>
 
                                                     <td>
-
-                                                    </td>
-
-                                                    <td>
-
-                                                    <input 
-                                                            type="submit"
-                                                            value="Crear producto"
-                                                            className="w-full bg-violet-800 mt-5 px-20 py-4 text-white font-bold my-1 mr-3 hover:cursor-pointer hover:bg-lime-500 transition-colors"
-                                                            onClick={(e) => actualizarProducto(e, item._id)}
-                                                        />
-
                                                         <input
                                                             type="submit"
                                                             value="Actualizar"
-                                                            className="bg-violet-900 py-3 text-white font-bold"
-                                                            onClick={(e) => actualizarProducto(e, item._id)}
+                                                            className="w-10/12 bg-violet-900 mt-5  px-10 py-4 text-white font-bold my-1 mr-3 hover:cursor-pointer hover:bg-violet-600 transition-colors rounded-3xl ml-10"
+                                                            onClick={(e) => actualizarProducto(item._id)}
                                                         />
 
                                                         <input
                                                             type="submit"
                                                             value="Eliminar"
-                                                            className="bg-violet-900 py-3 text-white font-bold"
+                                                            className="w-10/12 bg-orange-800 px-20 py-4  text-white font-bold mb-10 mr-3 hover:cursor-pointer hover:bg-red-500 transition-colors rounded-3xl ml-10"
                                                             onClick={(e) => borrarProducto(e, item._id)}
                                                         />
 

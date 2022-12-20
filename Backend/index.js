@@ -21,7 +21,8 @@ app.use("/api/auth", auth);
 app.use("/api/categorias", categoriasRouters);
 app.use("/api/listacategorias", categoriasRouters);
 app.use("/api/productos", productosRouters);
-app.use("/api/listaproductos", productosRouters);
+//app.use("/api/listaproductos", productosRouters);
+//app.use("/api/crearproducto", productosRouters);
 
 
 

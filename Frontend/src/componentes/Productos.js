@@ -1,16 +1,29 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Header from './Header';
 import Sidebar from "./Sidebar";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import crud from "../conexiones/crud";
 import swal from "sweetalert";
 
+/* Linea 199
+<option value="value">
+                {nombreCategoria.map((category) => (
+                    <a
+                      key={category.nombre}
+                      href={category.href}
+                      >
+                    <span className="relative mt-auto text-center text-xl font-bold text-white">{category.nombre}</span>
+                      </a>))} </option>
+                      </select>
+            */
 
     const Productos = () =>{
 
         const navigate = useNavigate();
 
-    const [categoria, setProducto] = useState({
+        const {nombreCategoria}= useParams();
+
+    const [producto, setProducto] = useState({
 
         nombre:"",
         descripcion:"",
@@ -20,24 +33,48 @@ import swal from "sweetalert";
         
     });
 
-    const {nombre, descripcion, stock, precio, imagen, categoriaId}= categoria;
+   
+
+    const {nombre, descripcion, stock, precio, imagen}= producto;
 
     const onChange = (e)=>{
         setProducto({
-            ...categoria,
+            ...producto,
             [e.target.name]: e.target.value
         });
     };
-        
+
+    
+    const [categoria, setCategorias] = useState([]);
+
+    const cargarCategorias = async()=>{
+
+        const response = await crud.GET (`/api/categorias/home`);
+        console.log(response);
+        setCategorias(response.categorias);
+    }
+
+        useEffect(()=>{
+            cargarCategorias();
+        },[]);
+
+      
+      /*  const categoriaNombre = async() =>{
+         const nombreCategoria ={
+            nombreC: categoria.nombre
+        }
+        console.log(categoriaNombre)*/
+
+
     const ingresarProducto = async () =>{
 
         const data = {
-            nombre: categoria.nombre,
-            descripcion: categoria.descripcion,
-            stock: categoria.stock,
-            precio: categoria.precio,
-            imagen: categoria.imagen,
-            categoriaId: categoria.categoriaId
+            nombre: producto.nombre,
+            descripcion: producto.descripcion,
+            stock: producto.stock,
+            precio: producto.precio,
+            imagen: producto.imagen,
+            nombreCategoria: nombreCategoria
 
         }
         //console.log(data);
@@ -71,6 +108,9 @@ import swal from "sweetalert";
         e.preventDefault();
         ingresarProducto();
     }
+
+
+    //<option value='+name.idClient+'>'+name.name+'</option>');
         
     return (
         <>
@@ -154,19 +194,27 @@ import swal from "sweetalert";
             />
 
 <label className="uppercase text-white block text-lx font-bold">Elija la categoria: </label>
+            
+            
             <select 
-            type="categoriaId"
-            id="categoriaId"
-            name="categoriaId"
+            type="nombreCategoria"
+            id="nombreCategoria"
+            name="nombreCategoria"
             placeholder="Elija la categoria"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={categoriaId}
+            value={nombreCategoria}
             onChange={onChange}
             >
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+               
+               <option value= "categoria">
+                {[nombre]}
+               </option>
+               
+                
             </select>
+           
+            
+            
         
 
         <div className="my-4">

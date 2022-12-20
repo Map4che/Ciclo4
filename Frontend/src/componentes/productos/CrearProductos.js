@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
-import {useNavigate, useParams} from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import crud from '../../conexiones/crud';
 import swal from 'sweetalert';
 
@@ -48,8 +48,8 @@ const response = await crud.POST(`/api/productos`, data);
 const mensaje = response.msg;
 console.log(mensaje);
 
-if(mensaje==="Producto creado correctamente"){
-    const mensaje="Producto creada correctamente";
+if(response){
+    const mensaje="Producto creado correctamente";
     swal({
         title:"Informacion",
         text:mensaje,
@@ -65,7 +65,7 @@ if(mensaje==="Producto creado correctamente"){
         }
     })
 
-            navigate(`/home-productos/${idCategoria}`);
+            navigate(`/admin`);
     };
 }
 
@@ -92,7 +92,7 @@ return (
             <h1 className="text-center bg-gradient-to-r from-red-700 via-orange-400 to-red-700 bg-clip-text font-display text-5xl tracking-tight text-transparent font-bold">Crear Productos</h1>
 
     <div className="my-4">
-        <div class="my-6 imagencategoria rounded-full bg-cover bg-center"/>
+        <div class="my-6 imagenproducto rounded-full bg-cover bg-center"/>
     <label className="uppercase text-white block text-lx font-bold">Ingrese el nombre del Producto: </label>
     <input 
     type="nombre"
@@ -109,7 +109,7 @@ return (
     type="text"
     id="descripcion"
     name="descripcion"
-    placeholder="Nombre del Producto"
+    placeholder="Descripcion del Producto"
     className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
     value={descripcion}
     onChange={onChange}
@@ -120,7 +120,7 @@ return (
     type="number"
     id="precio"
     name="precio"
-    placeholder="Nombre del Producto"
+    placeholder="Precio del Producto"
     className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
     value={precio}
     onChange={onChange}
@@ -131,7 +131,7 @@ return (
     type="number"
     id="stock"
     name="stock"
-    placeholder="Nombre del Producto"
+    placeholder="Stock Producto"
     className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
     value={stock}
     onChange={onChange}
@@ -155,6 +155,12 @@ return (
         className="bg-gray-400 mb-5 w-full py-3 text-white uppercase font-bold rounded-full hover:cursor-pointer hover:bg-lime-500 transition-colors"
     />
 </div>
+
+            <Link
+            className="bg-red-700 block text-center my-5 text-white font-bold mx-40 rounded-3xl"
+            to={"/admin"}>
+                Cancelar
+            </Link>
   
     </div>
     </form>
