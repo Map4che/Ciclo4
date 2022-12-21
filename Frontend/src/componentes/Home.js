@@ -1,46 +1,12 @@
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import crud from "../conexiones/crud";
 
 
-/*{producto.map((product) => (
-                
-                    <a key={product.nombre}
-                    href={product.href}>
-                   
-                   <div className="relative flex h-20 flex-col overflow-hidden p-20 hover:opacity-60 xl:w-auto rounded-full mx-auto my-2"
-                  >
-                    <a class="block relative h-48 rounded overflow-hidden">
-                <img 
-                src={product.imagen}
-                alt={product.imageAlt}
-                class="object-cover object-center w-full h-full block" 
-                />
-              
-              <div class="mt-1">
-          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-0">{product.categoria}</h3>
-          <h2 class="text-white title-font text-lg font-medium">{product.nombre}</h2>
-          <p class="mt-0">Precio: ${product.precio}</p>
-          <p class="mt-0 mb-10">Stock:{product.stock}</p>
-          
-        </div>
-        
-        <a
-       
-        className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
-      >
-        Add to bag<span className="sr-only">, {product.name}</span>
-      </a>
-      </a>
-        </div>
-        
-        </a>
-        
-                  
-                ))}
-                */
 
     const Home = () =>{
+
+      const navigate = useNavigate();
 
         const [categoria, setCategoria] = useState([]);
         
@@ -63,7 +29,12 @@ import crud from "../conexiones/crud";
             cargarProductos();
         },[]);
 
+
+        const productoXCategoria = async (idCategoria) => {
         
+          navigate(`/categoria/${idCategoria}`);
+      
+      }
         
 
     return (
@@ -111,7 +82,7 @@ import crud from "../conexiones/crud";
                {categoria.map((category) => (
                   <a
                     key={category.nombre}
-                    href="/categoria/:id"
+                   /* onClick={(e) => productoXCategoria(categoria._id)*/
                     className="relative flex h-10 flex-col overflow-hidden p-20 hover:opacity-60 xl:w-auto rounded-full mx-auto my-2"
                   >
                     <span aria-hidden="true" className="absolute inset-0">

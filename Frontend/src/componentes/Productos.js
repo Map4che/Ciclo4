@@ -29,13 +29,13 @@ import swal from "sweetalert";
         descripcion:"",
         stock:"",
         precio:"",
-        imagen:""
-        
+        imagen:"",
+       
     });
 
    
 
-    const {nombre, descripcion, stock, precio, imagen}= producto;
+    const {nombre, descripcion, stock, precio, imagen, categoriaId}= producto;
 
     const onChange = (e)=>{
         setProducto({
@@ -45,15 +45,18 @@ import swal from "sweetalert";
     };
 
     
+    
     const [categoria, setCategorias] = useState([]);
 
     const cargarCategorias = async()=>{
 
         const response = await crud.GET (`/api/categorias/home`);
         console.log(response);
-        setCategorias(response.categorias);
+        setCategorias(response.categoria);
     }
 
+
+        
         useEffect(()=>{
             cargarCategorias();
         },[]);
@@ -74,7 +77,7 @@ import swal from "sweetalert";
             stock: producto.stock,
             precio: producto.precio,
             imagen: producto.imagen,
-            nombreCategoria: nombreCategoria
+            categoriaId: producto.categoriaId
 
         }
         //console.log(data);
@@ -82,7 +85,7 @@ import swal from "sweetalert";
         const mensaje = response.msg;
         console.log(mensaje);
 
-        if(mensaje==="Producto creado correctamente"){
+        if(response){
             const mensaje="Producto creada correctamente";
             swal({
                 title:"Informacion",
@@ -197,18 +200,21 @@ import swal from "sweetalert";
             
             
             <select 
-            type="nombreCategoria"
-            id="nombreCategoria"
-            name="nombreCategoria"
+            type="categoriaId"
+            id="categoriaId"
+            name="categoriaId"
             placeholder="Elija la categoria"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={nombreCategoria}
+            value={categoriaId}
             onChange={onChange}
             >
+
+                {categoria.map(categoria =>
                
-               <option value= "categoria">
-                {[nombre]}
-               </option>
+               <option key={categoria._id}>
+                {categoria.nombre}
+               </option>)
+    }
                
                 
             </select>
