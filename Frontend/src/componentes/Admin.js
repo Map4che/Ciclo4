@@ -25,22 +25,7 @@ const Admin = () => {
         autenticarUsuario()
     },[navigate]);
 
-/*
-    const [categoria, getCategoria] = useState({
 
-        nombre: ""
-
-    });
-
-    const { nombre } = categoria;
-
-    const onChange = (e) => {
-        getCategoria({
-            ...categoria,
-            [e.target.name]: e.target.value
-        });
-    };
-*/
     const [categoria, setCategoria] = useState([]);
 
     const cargarCategorias = async()=>{
